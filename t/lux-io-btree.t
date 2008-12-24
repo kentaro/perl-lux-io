@@ -4,6 +4,7 @@ use File::Temp;
 use FindBin;
 use lib "$FindBin::Bin/../blib/lib";
 use lib "$FindBin::Bin/../blib/arch";
+use Lux::IO;
 use Lux::IO::Btree;
 
 my $bt = Lux::IO::Btree->new;
@@ -13,7 +14,7 @@ can_ok $bt, qw(open close get put del);
 my $fh = File::Temp->new;
 my $filename = $fh->filename;
 
-ok  $bt->open($filename);
+ok  $bt->open($filename, Lux::IO::DB_CREAT);
 ok  $bt->put('key', 'value');
 is  $bt->get('key'), 'value';
 ok  $bt->del('key');

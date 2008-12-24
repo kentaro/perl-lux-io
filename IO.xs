@@ -63,10 +63,12 @@ bool lux_io_btree_del (int bt, char * key) {
   return btp->del(&k);
 }
 
-MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_io_
+MODULE=Lux::IO    PACKAGE=Lux::IO           PREFIX=xs_lux_io_
+
+MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_lux_io_
 
 int
-xs_io_btree_new(index_type)
+xs_lux_io_btree_new(index_type)
     int index_type;
 CODE:
     RETVAL = lux_io_btree_new(index_type);
@@ -74,7 +76,7 @@ OUTPUT:
     RETVAL
 
 int
-xs_io_btree_free(bt)
+xs_lux_io_btree_free(bt)
     int bt;
 CODE:
     RETVAL = lux_io_btree_free(bt);
@@ -82,7 +84,7 @@ OUTPUT:
     RETVAL
 
 bool
-xs_io_btree_open(bt, db_name, oflags)
+xs_lux_io_btree_open(bt, db_name, oflags)
     int   bt;
     char* db_name;
     int   oflags;
@@ -92,7 +94,7 @@ OUTPUT:
     RETVAL
 
 bool
-xs_io_btree_close(bt)
+xs_lux_io_btree_close(bt)
     int bt;
 CODE:
     RETVAL = lux_io_btree_close(bt);
@@ -100,7 +102,7 @@ OUTPUT:
     RETVAL
 
 char *
-xs_io_btree_get(bt, key)
+xs_lux_io_btree_get(bt, key)
     int    bt;
     char * key;
 CODE:
@@ -109,7 +111,7 @@ OUTPUT:
     RETVAL
 
 bool
-xs_io_btree_put(bt, key, value, insert_mode)
+xs_lux_io_btree_put(bt, key, value, insert_mode)
     int    bt;
     char * key;
     char * value;
@@ -120,7 +122,7 @@ OUTPUT:
     RETVAL
 
 bool
-xs_io_btree_del(bt, key)
+xs_lux_io_btree_del(bt, key)
     int    bt;
     char * key;
 CODE:
