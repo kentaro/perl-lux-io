@@ -1,0 +1,24 @@
+/* まだ使ってない */
+TYPEMAP
+Lux_IO_Btree *     T_LUX_IO_BTREE
+Lux_IO_data_t      T_LUX_IO_DATA_T
+string             T_STDSTRING
+
+OUTPUT
+T_LUX_IO_BTREE
+    sv_setref_pv($arg, "Lux::IO::Btree", (void*)$var);
+
+T_STDSTRING
+    sv_setpvn($arg, $var.c_str(), $var.length());
+
+INPUT
+T_LUX_IO_BTREE
+    if(sv_isobject($arg) && (SvTYPE(SvRV($arg)) == SVt_PVMG))
+        $var = ($type)SvIV((SV*)SvRV($arg));
+    else{
+        XSRETURN_UNDEF;
+    }
+
+T_STDSTRING
+    (void) SvPV_nolen($arg);
+    $var(SvPV_nolen($arg),SvCUR($arg));
