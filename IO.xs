@@ -3,6 +3,8 @@
 
 using namespace std;
 
+#define PERL_NO_GET_CONTEXT
+
 #ifdef __cplusplus
 extern "C" {
 #endif
