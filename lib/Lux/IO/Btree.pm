@@ -1,4 +1,5 @@
 package Lux::IO::Btree;
+use 5.008001;
 use strict;
 use warnings;
 use Carp qw(croak);
@@ -26,7 +27,7 @@ sub DESTROY {
 
 sub open {
     my ($self, $filename, $oflags) = @_;
-    btree_open($$self, $filename, $oflags || $Lux::IO::DB_CREAT)
+    btree_open($$self, $filename, $oflags || Lux::IO::DB_CREAT)
         or croak "Couldn't open $filename";
 }
 

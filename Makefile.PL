@@ -11,7 +11,7 @@ makemaker_args       LD    => 'g++';
 makemaker_args       XSOPT => '-C++';
 cc_inc_paths         '.';
 cc_files             'IO.c';
-can_cc               or die 'This module requires C compiler.';
+can_cc               or die 'This module requires C++ compiler.';
 use_test_base;
 auto_include_deps;
 WriteAll;

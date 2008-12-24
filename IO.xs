@@ -41,25 +41,25 @@ bool lux_io_btree_close (int bt) {
 }
 
 char * lux_io_btree_get (int bt, char * key) {
-  Lux::IO::Btree *  btp = INT2PTR(Lux::IO::Btree *, bt);
-  Lux::IO::data_t     k = { key, strlen(key) };
-  Lux::IO::data_t * res =  btp->get(&k);
-  if (!res) {
+  Lux::IO::Btree *  btp   = INT2PTR(Lux::IO::Btree *, bt);
+  Lux::IO::data_t   k     = { key, strlen(key) };
+  Lux::IO::data_t * value =  btp->get(&k);
+  if (!value) {
     return NULL;
   }
-  return (char *)res->data;
+  return (char *) value->data;
 }
 
 bool lux_io_btree_put (int bt, char * key, char * value, int insert_mode) {
   Lux::IO::Btree *  btp = INT2PTR(Lux::IO::Btree *, bt);
-  Lux::IO::data_t     k = { key,   strlen(key)   };
-  Lux::IO::data_t     v = { value, strlen(value) };
+  Lux::IO::data_t   k   = { key,   strlen(key)   };
+  Lux::IO::data_t   v   = { value, strlen(value) };
   return btp->put(&k, &v, (Lux::IO::insert_mode_t) insert_mode);
 }
 
 bool lux_io_btree_del (int bt, char * key) {
   Lux::IO::Btree *  btp = INT2PTR(Lux::IO::Btree *, bt);
-  Lux::IO::data_t     k = { key,   strlen(key)   };
+  Lux::IO::data_t   k   = { key,   strlen(key)   };
   return btp->del(&k);
 }
 

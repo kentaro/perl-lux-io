@@ -1,4 +1,5 @@
 package Lux::IO;
+use 5.008001;
 use strict;
 use warnings;
 
@@ -8,6 +9,11 @@ our $DB_RDONLY = 0x0000;
 our $DB_RDWR   = 0x0002;
 our $DB_CREAT  = 0x0200;
 our $DB_TRUNC  = 0x0400;
+
+sub DB_RDONLY { $DB_RDONLY }
+sub DB_RDWR   { $DB_RDWR   }
+sub DB_CREAT  { $DB_CREAT  }
+sub DB_TRUNC  { $DB_TRUNC  }
 
 1;
 
