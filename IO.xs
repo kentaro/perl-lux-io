@@ -45,11 +45,7 @@ CODE:
 bool
 xs_lux_io_btree_open(Lux_IO_Btree* bt, const char *db_name, int oflags)
 CODE:
-    bool ret =  bt->open(db_name, (Lux::db_flags_t) oflags);
-    if (!ret) {
-        delete bt; // XXX shouldn't free here?
-    }
-    RETVAL = ret;
+    RETVAL = bt->open(db_name, (Lux::db_flags_t) oflags);
 OUTPUT:
     RETVAL
 
