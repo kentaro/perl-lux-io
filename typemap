@@ -1,4 +1,3 @@
-/* まだ使ってない */
 TYPEMAP
 Lux_IO_Btree *     T_LUX_IO_BTREE
 Lux_IO_data_t      T_LUX_IO_DATA_T
