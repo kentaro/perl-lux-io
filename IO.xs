@@ -1,7 +1,4 @@
 #include <luxio/btree.h>
-#include <string>
-
-using namespace std;
 
 #define PERL_NO_GET_CONTEXT
 
