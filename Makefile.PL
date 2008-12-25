@@ -1,13 +1,13 @@
 use inc::Module::Install;
 
-requires 'enum';
-
 name                 'Lux-IO';
-author               'Kentaro Kuribayashi, <kentarok@gmail.com>';
+author               'Kentaro Kuribayashi, <kentarok@cpan.org>';
 all_from             'lib/Lux/IO.pm';
+license              'perl';
 build_requires       'Test::More';
 build_requires       'FindBin';
 build_requires       'File::Temp';
+requires             'Exporter::Lite';
 makemaker_args       CC    => 'g++';
 makemaker_args       LD    => 'g++';
 makemaker_args       XSOPT => '-C++';

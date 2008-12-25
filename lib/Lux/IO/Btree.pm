@@ -2,11 +2,6 @@ package Lux::IO::Btree;
 use 5.008001;
 use strict;
 use warnings;
-use Carp qw(croak);
-use enum qw(
-    ENUM: NONCLUSTER CLUSTER
-    ENUM: OVERWRITE NOOVERWRITE APPEND
-);
 use Lux::IO;
 
 our $VERSION = '0.01';
@@ -16,7 +11,7 @@ XSLoader::load('Lux::IO', $VERSION);
 
 sub new {
     my ($class, $index_type) = shift;
-    btree_new($index_type || NONCLUSTER);
+    btree_new($index_type || CLUSTER);
 }
 
 sub DESTROY {
@@ -26,8 +21,7 @@ sub DESTROY {
 
 sub open {
     my ($self, $filename, $oflags) = @_;
-    btree_open($self, $filename, $oflags || Lux::IO::DB_CREAT)
-        or croak "Couldn't open $filename";
+    btree_open($self, $filename, $oflags || DB_CREAT);
 }
 
 sub close {

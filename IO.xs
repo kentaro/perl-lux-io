@@ -43,7 +43,7 @@ CODE:
     delete bt;
 
 bool
-xs_lux_io_btree_open(Lux_IO_Btree* bt, const char *db_name, int oflags)
+xs_lux_io_btree_open(Lux_IO_Btree* bt, const char* db_name, int oflags)
 CODE:
     RETVAL = bt->open(db_name, (Lux::db_flags_t) oflags);
 OUTPUT:
@@ -56,13 +56,13 @@ CODE:
 OUTPUT:
     RETVAL
 
-char *
-xs_lux_io_btree_get(Lux_IO_Btree * bt, const char *key)
+char*
+xs_lux_io_btree_get(Lux_IO_Btree* bt, const char* key)
 CODE:
-    Lux::IO::data_t   k     = { key, strlen(key) };
-    Lux::IO::data_t * value =  bt->get(&k);
-    if (value) {
-        RETVAL = (char *) value->data;
+    Lux::IO::data_t  k = { key, strlen(key) };
+    Lux::IO::data_t* v = bt->get(&k);
+    if (v) {
+        RETVAL = (char *) v->data;
     } else {
         RETVAL = NULL;
     }
@@ -70,10 +70,10 @@ OUTPUT:
     RETVAL
 
 bool
-xs_lux_io_btree_put(Lux_IO_Btree * bt, const char * key, const char * value, int insert_mode)
+xs_lux_io_btree_put(Lux_IO_Btree* bt, const char* key, const char* value, int insert_mode)
 CODE:
-    Lux::IO::data_t   k   = { key,   strlen(key)   };
-    Lux::IO::data_t   v   = { value, strlen(value) };
+    Lux::IO::data_t k = { key,   strlen(key)   };
+    Lux::IO::data_t v = { value, strlen(value) };
     RETVAL = bt->put(&k, &v, (Lux::IO::insert_mode_t) insert_mode);
 OUTPUT:
     RETVAL
@@ -81,7 +81,7 @@ OUTPUT:
 bool
 xs_lux_io_btree_del(Lux_IO_Btree* bt, const char *key)
 CODE:
-    Lux::IO::data_t   k   = { key,   strlen(key)   };
+    Lux::IO::data_t k = { key, strlen(key) };
     RETVAL = bt->del(&k);
 OUTPUT:
     RETVAL
