@@ -15,12 +15,6 @@ extern "C" {
 
 typedef Lux::IO::Btree Lux_IO_Btree;
 
-bool lux_io_btree_del (int bt, char * key) {
-  Lux::IO::Btree *  btp = INT2PTR(Lux::IO::Btree *, bt);
-  Lux::IO::data_t   k   = { key,   strlen(key)   };
-  return btp->del(&k);
-}
-
 MODULE=Lux::IO    PACKAGE=Lux::IO           PREFIX=xs_lux_io_
 
 MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_lux_io_
