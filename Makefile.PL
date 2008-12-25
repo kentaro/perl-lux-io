@@ -1,5 +1,7 @@
 use inc::Module::Install;
 
+requires 'enum';
+
 name                 'Lux-IO';
 author               'Kentaro Kuribayashi, <kentarok@gmail.com>';
 all_from             'lib/Lux/IO.pm';
