@@ -13,6 +13,16 @@ extern "C" {
 }
 #endif
 
+#define XS_STATE(type, x) \
+    INT2PTR(type, SvROK(x) ? SvIV(SvRV(x)) : SvIV(x))
+
+#define XS_STRUCT2OBJ(sv, class, obj) \
+    if (obj == NULL) { \
+        sv_setsv(sv, &PL_sv_undef); \
+    } else { \
+        sv_setref_pv(sv, class, (void *) obj); \
+    }
+
 typedef Lux::IO::Btree Lux_IO_Btree;
 
 MODULE=Lux::IO    PACKAGE=Lux::IO           PREFIX=xs_lux_io_
