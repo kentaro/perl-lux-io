@@ -25,7 +25,72 @@ extern "C" {
 
 typedef Lux::IO::Btree Lux_IO_Btree;
 
-MODULE=Lux::IO    PACKAGE=Lux::IO           PREFIX=xs_lux_io_
+MODULE=Lux::IO    PACKAGE=Lux    PREFIX=xs_lux_
+
+int
+xs_lux_DB_RDONLY()
+CODE:
+    RETVAL = (int) Lux::DB_RDONLY;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_DB_RDWR()
+CODE:
+    RETVAL = (int) Lux::DB_RDWR;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_DB_CREAT()
+CODE:
+    RETVAL = (int) Lux::DB_CREAT;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_DB_TRUNC()
+CODE:
+    RETVAL = (int) Lux::DB_TRUNC;
+OUTPUT:
+    RETVAL
+
+MODULE=Lux::IO    PACKAGE=Lux::IO    PREFIX=xs_lux_io_
+
+int
+xs_lux_io_NONCLUSTER()
+CODE:
+    RETVAL = (int) Lux::IO::NONCLUSTER;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_io_CLUSTER()
+CODE:
+    RETVAL = (int) Lux::IO::CLUSTER;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_io_OVERWRITE()
+CODE:
+    RETVAL = (int) Lux::IO::OVERWRITE;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_io_NOOVERWRITE()
+CODE:
+    RETVAL = (int) Lux::IO::NOOVERWRITE;
+OUTPUT:
+    RETVAL
+
+int
+xs_lux_io_APPEND()
+CODE:
+    RETVAL = (int) Lux::IO::APPEND;
+OUTPUT:
+    RETVAL
 
 MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_lux_io_
 

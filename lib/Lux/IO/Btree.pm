@@ -4,14 +4,9 @@ use strict;
 use warnings;
 use Lux::IO;
 
-our $VERSION = '0.01';
-
-require XSLoader;
-XSLoader::load('Lux::IO', $VERSION);
-
 sub new {
     my ($class, $index_type) = shift;
-    btree_new($index_type || CLUSTER);
+    btree_new($index_type || Lux::IO::CLUSTER);
 }
 
 sub DESTROY {
@@ -21,7 +16,7 @@ sub DESTROY {
 
 sub open {
     my ($self, $filename, $oflags) = @_;
-    btree_open($self, $filename, $oflags || DB_CREAT);
+    btree_open($self, $filename, $oflags || Lux::DB_CREAT);
 }
 
 sub close {
@@ -36,7 +31,7 @@ sub get {
 
 sub put {
     my ($self, $key, $value, $insert_mode) = @_;
-    btree_put($self, $key, $value, $insert_mode || OVERWRITE);
+    btree_put($self, $key, $value, $insert_mode || Lux::IO::OVERWRITE);
 }
 
 sub del {

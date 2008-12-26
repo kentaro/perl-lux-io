@@ -2,41 +2,11 @@ package Lux::IO;
 use 5.008001;
 use strict;
 use warnings;
-use Exporter::Lite;
 
 our $VERSION = '0.01';
 
-our @EXPORT = qw(
-    DB_RDONLY DB_RDWR DB_CREAT DB_TRUNC
-    NONCLUSTER CLUSTER
-    OVERWRITE NOOVERWRITE APPEND
-);
-our @EXPORT_OK = @EXPORT;
-
-our $DB_RDONLY = 0x0000;
-our $DB_RDWR   = 0x0002;
-our $DB_CREAT  = 0x0200;
-our $DB_TRUNC  = 0x0400;
-
-# Lux::db_flag_t
-sub DB_RDONLY { $DB_RDONLY }
-sub DB_RDWR   { $DB_RDWR   }
-sub DB_CREAT  { $DB_CREAT  }
-sub DB_TRUNC  { $DB_TRUNC  }
-
-# Lux::IO::index_type
-our $NONCLUSTER  = 0;
-our $CLUSTER     = 1;
-sub NONCLUSTER  { $NONCLUSTER  }
-sub CLUSTER     { $CLUSTER     }
-
-# Lux::IO::insert_mode_t
-our $OVERWRITE   = 0;
-our $NOOVERWRITE = 1;
-our $APPEND      = 2;
-sub OVERWRITE   { $OVERWRITE   }
-sub NOOVERWRITE { $NOOVERWRITE }
-sub APPEND      { $APPEND      }
+require XSLoader;
+XSLoader::load('Lux::IO', $VERSION);
 
 1;
 
