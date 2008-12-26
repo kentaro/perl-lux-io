@@ -21,12 +21,12 @@ Lux::IO - A Perl Interface to Lux IO
   use Lux::IO;
   use Lux::IO::Btree;
 
-  my $bt = Lux::IO::Btree->new(CLUSTER);
-  $bt->open('test', DB_CREAT);
-  $bt->put('key', 'value', OVERWRITE);  #=> true
-  $bt->get('key');                      #=> 'value'
-  $bt->del('key');                      #=> true
-  $bt->get('key');                      #-> false
+  my $bt = Lux::IO::Btree->new(Lux::IO::CLUSTER);
+  $bt->open('test', Lux::DB_CREAT);
+  $bt->put('key', 'value', Lux::IO::OVERWRITE); #=> true
+  $bt->get('key');                              #=> 'value'
+  $bt->del('key');                              #=> true
+  $bt->get('key');                              #-> false
   $bt->close;
 
 =head1 DESCRIPTION
@@ -41,9 +41,18 @@ database so far, though Lux IO supports also hash-based database.
 
 =over 4
 
-  my $bt = Lux::IO::Btree->new(CLUSTER);
+  my $bt = Lux::IO::Btree->new(Lux::IO::CLUSTER);
 
-Creates and returns a new Lux::IO::Btree object.
+Creates and returns a new Lux::IO::Btree object. C<$insert_type> can
+be one of the types below:
+
+over 4
+
+=item * Lux::IO::CLUSTER
+
+=item * Lux::IO::NONCLUSTER
+
+back
 
 =back
 
@@ -51,9 +60,22 @@ Creates and returns a new Lux::IO::Btree object.
 
 =over 4
 
-  $bt->open($filename, DB_CREAT);
+  $bt->open($filename, Lux::DB_CREAT);
 
-Opens a database specified by C<$filename>.
+Opens a database specified by C<$filename>. C<$oflags> can be one of
+or a combination of the flags below:
+
+over 4
+
+=item * Lux::DB_RDONLY
+
+=item * Lux::DB_RDWR
+
+=item * Lux::DB_CREAT
+
+=item * Lux::DB_TRUNC
+
+back
 
 =back
 
@@ -82,9 +104,20 @@ database.
 
 =over 4
 
-  $bt->put($key, $value, OVERWRITE);
+  $bt->put($key, $value, Lux::IO::OVERWRITE);
 
-Stores the key-value pair into the database.
+Stores the key-value pair into the database. C<$insert_mode> can be
+one of the modes below:
+
+over 4
+
+=item * Lux::IO::OVERWRITE
+
+=item * Lux::IO::NOOVERWRITE
+
+=item * Lux::IO::APPEND
+
+back
 
 =back
 
