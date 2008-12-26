@@ -23,72 +23,75 @@ extern "C" {
         sv_setref_pv(sv, class, (void *) obj); \
     }
 
-typedef Lux::IO::Btree Lux_IO_Btree;
+typedef Lux::db_flags_t        Lux_db_flags_t;
+typedef Lux::IO::db_index_t    Lux_IO_db_index_t;
+typedef Lux::IO::insert_mode_t Lux_IO_insert_mode_t;
+typedef Lux::IO::Btree         Lux_IO_Btree;
 
 MODULE=Lux::IO    PACKAGE=Lux    PREFIX=xs_lux_
 
-int
+Lux_db_flags_t
 xs_lux_DB_RDONLY()
 CODE:
-    RETVAL = (int) Lux::DB_RDONLY;
+    RETVAL = Lux::DB_RDONLY;
 OUTPUT:
     RETVAL
 
-int
+Lux_db_flags_t
 xs_lux_DB_RDWR()
 CODE:
-    RETVAL = (int) Lux::DB_RDWR;
+    RETVAL = Lux::DB_RDWR;
 OUTPUT:
     RETVAL
 
-int
+Lux_db_flags_t
 xs_lux_DB_CREAT()
 CODE:
-    RETVAL = (int) Lux::DB_CREAT;
+    RETVAL = Lux::DB_CREAT;
 OUTPUT:
     RETVAL
 
-int
+Lux_db_flags_t
 xs_lux_DB_TRUNC()
 CODE:
-    RETVAL = (int) Lux::DB_TRUNC;
+    RETVAL = Lux::DB_TRUNC;
 OUTPUT:
     RETVAL
 
 MODULE=Lux::IO    PACKAGE=Lux::IO    PREFIX=xs_lux_io_
 
-int
+Lux_IO_db_index_t
 xs_lux_io_NONCLUSTER()
 CODE:
-    RETVAL = (int) Lux::IO::NONCLUSTER;
+    RETVAL = Lux::IO::NONCLUSTER;
 OUTPUT:
     RETVAL
 
-int
+Lux_IO_db_index_t
 xs_lux_io_CLUSTER()
 CODE:
-    RETVAL = (int) Lux::IO::CLUSTER;
+    RETVAL = Lux::IO::CLUSTER;
 OUTPUT:
     RETVAL
 
-int
+Lux_IO_insert_mode_t
 xs_lux_io_OVERWRITE()
 CODE:
-    RETVAL = (int) Lux::IO::OVERWRITE;
+    RETVAL = Lux::IO::OVERWRITE;
 OUTPUT:
     RETVAL
 
-int
+Lux_IO_insert_mode_t
 xs_lux_io_NOOVERWRITE()
 CODE:
-    RETVAL = (int) Lux::IO::NOOVERWRITE;
+    RETVAL = Lux::IO::NOOVERWRITE;
 OUTPUT:
     RETVAL
 
-int
+Lux_IO_insert_mode_t
 xs_lux_io_APPEND()
 CODE:
-    RETVAL = (int) Lux::IO::APPEND;
+    RETVAL = Lux::IO::APPEND;
 OUTPUT:
     RETVAL
 
