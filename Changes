@@ -1,4 +1,7 @@
 Revision history for Perl extension Lux::IO.
 
+0.02  2008-12-27
+      - fixed some documentation errors.
+
 0.01  2008-12-27
       - initial version
