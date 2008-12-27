@@ -2,6 +2,7 @@
 \bCVS\b
 \.svn/
 \.git/
+\.gitignore
 ^tags$
 ^TAGS$
 ^MANIFEST\.
