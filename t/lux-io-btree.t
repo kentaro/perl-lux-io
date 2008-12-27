@@ -1,9 +1,6 @@
 use strict;
 use Test::More qw(no_plan);
 use File::Temp;
-use FindBin;
-use lib "$FindBin::Bin/../blib/lib";
-use lib "$FindBin::Bin/../blib/arch";
 use Lux::IO;
 use Lux::IO::Btree;
 
@@ -22,4 +19,3 @@ ok !$bt->get('key');
 ok  $bt->close();
 
 $fh->close;
-

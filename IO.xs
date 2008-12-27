@@ -30,44 +30,22 @@ typedef Lux::IO::Btree         Lux_IO_Btree;
 
 MODULE=Lux::IO    PACKAGE=Lux    PREFIX=xs_lux_
 
-Lux_db_flags_t
-xs_lux_DB_RDONLY()
-CODE:
-    RETVAL = Lux::DB_RDONLY;
-OUTPUT:
-    RETVAL
-
-Lux_db_flags_t
-xs_lux_DB_RDWR()
-CODE:
-    RETVAL = Lux::DB_RDWR;
-OUTPUT:
-    RETVAL
-
-Lux_db_flags_t
-xs_lux_DB_CREAT()
-CODE:
-    RETVAL = Lux::DB_CREAT;
-OUTPUT:
-    RETVAL
-
-Lux_db_flags_t
-xs_lux_DB_TRUNC()
-CODE:
-    RETVAL = Lux::DB_TRUNC;
-OUTPUT:
-    RETVAL
-
 MODULE=Lux::IO    PACKAGE=Lux::IO    PREFIX=xs_lux_io_
 
 BOOT:
     HV *stash;
+    stash = gv_stashpv("Lux", 1);
+    newCONSTSUB(stash, "DB_RDONLY", newSViv(Lux::DB_RDONLY));
+    newCONSTSUB(stash, "DB_RDWR"  , newSViv(Lux::DB_RDWR));
+    newCONSTSUB(stash, "DB_CREAT" , newSViv(Lux::DB_CREAT));
+    newCONSTSUB(stash, "DB_TRUNC" , newSViv(Lux::DB_TRUNC));
+
     stash = gv_stashpv("Lux::IO", 1);
-    newCONSTSUB(stash, "NONCLUSTER",  newSViv(Lux::IO::NONCLUSTER));
-    newCONSTSUB(stash, "CLUSTER",     newSViv(Lux::IO::CLUSTER));
-    newCONSTSUB(stash, "OVERWRITE",   newSViv(Lux::IO::OVERWRITE));
+    newCONSTSUB(stash, "NONCLUSTER" , newSViv(Lux::IO::NONCLUSTER));
+    newCONSTSUB(stash, "CLUSTER"    , newSViv(Lux::IO::CLUSTER));
+    newCONSTSUB(stash, "OVERWRITE"  , newSViv(Lux::IO::OVERWRITE));
     newCONSTSUB(stash, "NOOVERWRITE", newSViv(Lux::IO::NOOVERWRITE));
-    newCONSTSUB(stash, "APPEND",      newSViv(Lux::IO::APPEND));
+    newCONSTSUB(stash, "APPEND"     , newSViv(Lux::IO::APPEND));
 
 MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_lux_io_
 

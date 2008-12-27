@@ -1,7 +1,4 @@
 TYPEMAP
-Lux_db_flags_t       T_IV
-Lux_IO_db_index_t    T_IV
-Lux_IO_insert_mode_t T_IV
 Lux_IO_Btree *       T_LUX_IO_BTREE
 
 OUTPUT
