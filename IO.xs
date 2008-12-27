@@ -60,40 +60,14 @@ OUTPUT:
 
 MODULE=Lux::IO    PACKAGE=Lux::IO    PREFIX=xs_lux_io_
 
-Lux_IO_db_index_t
-xs_lux_io_NONCLUSTER()
-CODE:
-    RETVAL = Lux::IO::NONCLUSTER;
-OUTPUT:
-    RETVAL
-
-Lux_IO_db_index_t
-xs_lux_io_CLUSTER()
-CODE:
-    RETVAL = Lux::IO::CLUSTER;
-OUTPUT:
-    RETVAL
-
-Lux_IO_insert_mode_t
-xs_lux_io_OVERWRITE()
-CODE:
-    RETVAL = Lux::IO::OVERWRITE;
-OUTPUT:
-    RETVAL
-
-Lux_IO_insert_mode_t
-xs_lux_io_NOOVERWRITE()
-CODE:
-    RETVAL = Lux::IO::NOOVERWRITE;
-OUTPUT:
-    RETVAL
-
-Lux_IO_insert_mode_t
-xs_lux_io_APPEND()
-CODE:
-    RETVAL = Lux::IO::APPEND;
-OUTPUT:
-    RETVAL
+BOOT:
+    HV *stash;
+    stash = gv_stashpv("Lux::IO", 1);
+    newCONSTSUB(stash, "NONCLUSTER",  newSViv(Lux::IO::NONCLUSTER));
+    newCONSTSUB(stash, "CLUSTER",     newSViv(Lux::IO::CLUSTER));
+    newCONSTSUB(stash, "OVERWRITE",   newSViv(Lux::IO::OVERWRITE));
+    newCONSTSUB(stash, "NOOVERWRITE", newSViv(Lux::IO::NOOVERWRITE));
+    newCONSTSUB(stash, "APPEND",      newSViv(Lux::IO::APPEND));
 
 MODULE=Lux::IO    PACKAGE=Lux::IO::Btree    PREFIX=xs_lux_io_
 
