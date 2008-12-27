@@ -46,13 +46,13 @@ database so far, though Lux IO supports also hash-based database.
 Creates and returns a new Lux::IO::Btree object. C<$insert_type> can
 be one of the types below:
 
-over 4
+=over 4
 
 =item * Lux::IO::CLUSTER
 
 =item * Lux::IO::NONCLUSTER
 
-back
+=back
 
 =back
 
@@ -65,7 +65,7 @@ back
 Opens a database specified by C<$filename>. C<$oflags> can be one of
 or a combination of the flags below:
 
-over 4
+=over 4
 
 =item * Lux::DB_RDONLY
 
@@ -75,7 +75,7 @@ over 4
 
 =item * Lux::DB_TRUNC
 
-back
+=back
 
 =back
 
@@ -109,7 +109,7 @@ database.
 Stores the key-value pair into the database. C<$insert_mode> can be
 one of the modes below:
 
-over 4
+=over 4
 
 =item * Lux::IO::OVERWRITE
 
@@ -117,7 +117,7 @@ over 4
 
 =item * Lux::IO::APPEND
 
-back
+=back
 
 =back
 
