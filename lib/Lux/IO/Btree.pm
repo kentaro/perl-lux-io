@@ -5,8 +5,8 @@ use warnings;
 use Lux::IO;
 
 sub new {
-    my ($class, $index_type) = shift;
-    btree_new($index_type || Lux::IO::CLUSTER);
+    my ($class, $index_type) = @_;
+    btree_new(defined $index_type ? $index_type : Lux::IO::CLUSTER);
 }
 
 sub DESTROY {
