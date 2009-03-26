@@ -23,24 +23,20 @@ extern "C" {
         sv_setref_pv(sv, class, (void *) obj); \
     }
 
-typedef Lux::db_flags_t        Lux_db_flags_t;
+typedef Lux::IO::db_flags_t    Lux_IO_db_flags_t;
 typedef Lux::IO::db_index_t    Lux_IO_db_index_t;
 typedef Lux::IO::insert_mode_t Lux_IO_insert_mode_t;
 typedef Lux::IO::Btree         Lux_IO_Btree;
-
-MODULE=Lux::IO    PACKAGE=Lux    PREFIX=xs_lux_
 
 MODULE=Lux::IO    PACKAGE=Lux::IO    PREFIX=xs_lux_io_
 
 BOOT:
     HV *stash;
-    stash = gv_stashpv("Lux", 1);
-    newCONSTSUB(stash, "DB_RDONLY", newSViv(Lux::DB_RDONLY));
-    newCONSTSUB(stash, "DB_RDWR"  , newSViv(Lux::DB_RDWR));
-    newCONSTSUB(stash, "DB_CREAT" , newSViv(Lux::DB_CREAT));
-    newCONSTSUB(stash, "DB_TRUNC" , newSViv(Lux::DB_TRUNC));
-
     stash = gv_stashpv("Lux::IO", 1);
+    newCONSTSUB(stash, "DB_RDONLY"  , newSViv(Lux::IO::DB_RDONLY));
+    newCONSTSUB(stash, "DB_RDWR"    , newSViv(Lux::IO::DB_RDWR));
+    newCONSTSUB(stash, "DB_CREAT"   , newSViv(Lux::IO::DB_CREAT));
+    newCONSTSUB(stash, "DB_TRUNC"   , newSViv(Lux::IO::DB_TRUNC));
     newCONSTSUB(stash, "NONCLUSTER" , newSViv(Lux::IO::NONCLUSTER));
     newCONSTSUB(stash, "CLUSTER"    , newSViv(Lux::IO::CLUSTER));
     newCONSTSUB(stash, "OVERWRITE"  , newSViv(Lux::IO::OVERWRITE));
@@ -65,7 +61,7 @@ CODE:
 bool
 xs_lux_io_btree_open(Lux_IO_Btree* bt, const char* db_name, int oflags)
 CODE:
-    RETVAL = bt->open(db_name, (Lux::db_flags_t) oflags);
+    RETVAL = bt->open(db_name, (Lux::IO::db_flags_t) oflags);
 OUTPUT:
     RETVAL
 

@@ -11,7 +11,7 @@ can_ok $bt, qw(open close get put del);
 my $fh = File::Temp->new;
 my $filename = $fh->filename;
 
-ok  $bt->open($filename, Lux::DB_CREAT);
+ok  $bt->open($filename, Lux::IO::DB_CREAT);
 ok  $bt->put('key', 'value');
 is  $bt->get('key'), 'value';
 ok  $bt->del('key');

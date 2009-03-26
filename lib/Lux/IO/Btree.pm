@@ -16,7 +16,7 @@ sub DESTROY {
 
 sub open {
     my ($self, $filename, $oflags) = @_;
-    btree_open($self, $filename, $oflags || Lux::DB_CREAT);
+    btree_open($self, $filename, $oflags || Lux::IO::DB_CREAT);
 }
 
 sub close {

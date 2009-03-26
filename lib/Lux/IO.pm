@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 require XSLoader;
 XSLoader::load('Lux::IO', $VERSION);
@@ -22,7 +22,7 @@ Lux::IO - A Perl Interface to Lux IO
   use Lux::IO::Btree;
 
   my $bt = Lux::IO::Btree->new(Lux::IO::CLUSTER);
-  $bt->open('test', Lux::DB_CREAT);
+  $bt->open('test', Lux::IO::DB_CREAT);
   $bt->put('key', 'value', Lux::IO::OVERWRITE); #=> true
   $bt->get('key');                              #=> 'value'
   $bt->del('key');                              #=> true
@@ -60,20 +60,20 @@ be one of the types below:
 
 =over 4
 
-  $bt->open($filename, Lux::DB_CREAT);
+  $bt->open($filename, Lux::IO::DB_CREAT);
 
 Opens a database specified by C<$filename>. C<$oflags> can be one of
 or a combination of the flags below:
 
 =over 4
 
-=item * Lux::DB_RDONLY
+=item * Lux::IO::DB_RDONLY
 
-=item * Lux::DB_RDWR
+=item * Lux::IO::DB_RDWR
 
-=item * Lux::DB_CREAT
+=item * Lux::IO::DB_CREAT
 
-=item * Lux::DB_TRUNC
+=item * Lux::IO::DB_TRUNC
 
 =back
 
