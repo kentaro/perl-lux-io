@@ -9,6 +9,8 @@ build_requires       'File::Temp';
 makemaker_args       CC    => 'g++';
 makemaker_args       LD    => 'g++';
 makemaker_args       XSOPT => '-C++';
+makemaker_args       XSOPT => '-C++';
+makemaker_args       LIBS  => '-lluxio';
 cc_inc_paths         '.';
 cc_files             'IO.c';
 can_cc               or die 'This module requires C++ compiler.';

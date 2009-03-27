@@ -35,6 +35,11 @@ Lux IO is a yet another database manager. Lux::IO provides a Perl
 interface to it. You must note that it supports only B+ Tree-based
 database so far, though Lux IO supports also array-based database.
 
+=head1 CAVEAT
+
+Lux::IO now supports Lux IO library above version 0.2.1. You must
+install it before trying to install this module.
+
 =head1 METHODS
 
 =head2 new ( I<$index_type> )
