@@ -72,24 +72,24 @@ CODE:
 OUTPUT:
     RETVAL
 
-char*
+SV*
 xs_lux_io_btree_get(Lux_IO_Btree* bt, const char* key)
 CODE:
     Lux::IO::data_t  k = { key, strlen(key) };
     Lux::IO::data_t* v = bt->get(&k);
     if (v) {
-        RETVAL = (char *) v->data;
+	RETVAL = newSVpv((char *)v->data, v->size);
     } else {
-        RETVAL = NULL;
+        RETVAL = &PL_sv_undef;
     }
 OUTPUT:
     RETVAL
 
 bool
-xs_lux_io_btree_put(Lux_IO_Btree* bt, const char* key, const char* value, int insert_mode)
+xs_lux_io_btree_put(Lux_IO_Btree* bt, const char* key, const char* value, int length, int insert_mode)
 CODE:
     Lux::IO::data_t k = { key,   strlen(key)   };
-    Lux::IO::data_t v = { value, strlen(value) };
+    Lux::IO::data_t v = { value, length };
     RETVAL = bt->put(&k, &v, (Lux::IO::insert_mode_t) insert_mode);
 OUTPUT:
     RETVAL

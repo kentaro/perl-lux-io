@@ -31,7 +31,7 @@ sub get {
 
 sub put {
     my ($self, $key, $value, $insert_mode) = @_;
-    btree_put($self, $key, $value, $insert_mode || Lux::IO::OVERWRITE);
+    btree_put($self, $key, $value, length $value, $insert_mode || Lux::IO::OVERWRITE);
 }
 
 sub del {

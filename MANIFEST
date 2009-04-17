@@ -1,4 +1,3 @@
-.gitignore
 Changes
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
@@ -25,6 +24,7 @@ MANIFEST
 META.yml
 ppport.h
 README
+t/lux-io-btree-storable.t
 t/lux-io-btree.t
 t/lux-io.t
 typemap

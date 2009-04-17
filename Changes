@@ -1,5 +1,9 @@
 Revision history for Perl extension Lux::IO.
 
+0.06  2009-04-17
+      - fixed a bug: Lux::IO::Btree now can store binary values.
+        (Thanks to Naoya Ito)
+
 0.05  2009-03-28
       - Lux::IO now supports Lux IO library above version 0.2.1
       - updated constant names to make consistent to version 0.2.1 of
