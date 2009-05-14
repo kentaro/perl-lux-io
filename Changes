@@ -1,5 +1,9 @@
 Revision history for Perl extension Lux::IO.
 
+0.07  2009-05-14
+      - fixed a bug: to avoid memory leak, applied bt->clean_data() to
+        return value from bt->get()
+
 0.06  2009-04-17
       - fixed a bug: Lux::IO::Btree now can store binary values.
         (Thanks to Naoya Ito)
