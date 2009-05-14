@@ -78,7 +78,8 @@ CODE:
     Lux::IO::data_t  k = { key, strlen(key) };
     Lux::IO::data_t* v = bt->get(&k);
     if (v) {
-	RETVAL = newSVpv((char *)v->data, v->size);
+        RETVAL = newSVpv((char *)v->data, v->size);
+        bt->clean_data(v);
     } else {
         RETVAL = &PL_sv_undef;
     }
